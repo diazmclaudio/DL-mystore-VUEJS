@@ -7,9 +7,9 @@ const localVue = createLocalVue()
 localVue.use(VueRouter)
 const router = new VueRouter(myRoutes)
 
-describe('Test Login.vue', () => {
+describe('QA Login.vue', () => {
 
-    it('Error credenciales', () => {
+    it('Error al ingreso de credenciales', () => {
       const wrapper = shallowMount(Login,{
           propsData: {
               credentials: {
@@ -24,7 +24,7 @@ describe('Test Login.vue', () => {
       expect(wrapper.vm.$data.formHasErrors).toEqual(true)
     }),
   
-    it('Login exitoso a home', () => {
+    it('Ingreso mediante Login OK', () => {
       const wrapper = shallowMount(Login,{
           localVue,
           router

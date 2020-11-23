@@ -3,17 +3,17 @@ import Products from '@/components/Products.vue'
 import Vuex from 'vuex'
 import myStore from './mocks/store'
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
+const local = createLocalVue()
+local.use(Vuex)
 const store = new Vuex.Store(myStore)
 
-describe('Test Products', () => {
+describe('QA Products', () => {
 
-  it('Filtrar por nombre', () => {
+  it('Filtro por nombre de productos', () => {
     const productName = 'Café'
     const productSearch = 'Casa'
     const wrapper = shallowMount(Products, {
-      localVue,
+      local,
       Vuex
     })
     wrapper.setData({
@@ -42,14 +42,14 @@ describe('Test Products', () => {
     )
   }),
 
-  it('Añadir productos al carro', () => {
+  it('agregar productos al carro de compras', () => {
     const producto = {
       name: 'Computadora',
       price: 100.0,
       qty: 1,
     }
     const wrapper = shallowMount(Products, {
-      localVue,
+      local,
       Vuex,
       store
     })

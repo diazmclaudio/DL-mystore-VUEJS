@@ -5,34 +5,34 @@ import myStore from './mocks/store'
 import VueRouter from 'vue-router'
 import myRoutes from "./mocks/routes"
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
+const local = createLocalVue()
+local.use(Vuex)
 const store = new Vuex.Store(myStore)
-localVue.use(VueRouter)
+local.use(VueRouter)
 const router = new VueRouter(myRoutes)
 
-describe('Test Navbar', () => {
+describe('QA Navbar', () => {
 
-    it('Aparece login si no inició sesión', () => {
+    it('muestra login si no se ha iniciado sesión', () => {
         store.dispatch('updateUser', undefined)
         const wrapper = shallowMount(Navbar, {
           propsData: {
             title: "Mi Tienda"
           },
-          localVue,
+          local,
           store,
           router,
         })
         expect(wrapper.text()).toContain('Login')
       }),
 
-    it('Muestra usuario si inicia sesión', () => {
+    it('inicio de sesión con visualización de usuario', () => {
         store.dispatch('updateUser', { email: 'user@mystore.com' })
         const wrapper = shallowMount(Navbar, {
             propsData: {
                 title: "Mi Tienda"
             },
-            localVue,
+            local,
             store,
             router
         })
